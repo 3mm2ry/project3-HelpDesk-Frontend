@@ -83,15 +83,30 @@ function App() {
         <Route path="/tickets/:ticketId/comments" element={<Comments />} />
 
         {/* Assets */}
-        <Route path="/assets" element={<AssetList user={user} />} />
-
-        <Route path="/assets/new" element={<CreateAsset />} />
-
-        <Route path="/assets/:assetId" element={<AssetDetails user={user} />} />
-
-        <Route path="/assets/:assetId/edit" element={<EditAsset />} />
-
-        <Route path="/asset-requests" element={<AssetRequests />} />
+        <Route
+          path="/assets"
+          element={
+            user ? <AssetList user={user} /> : <Navigate to="/sign-in" />
+          }
+        />
+        <Route
+          path="/assets/new"
+          element={user ? <CreateAsset /> : <Navigate to="/sign-in" />}
+        />
+        <Route
+          path="/assets/:assetId"
+          element={
+            user ? <AssetDetails user={user} /> : <Navigate to="/sign-in" />
+          }
+        />
+        <Route
+          path="/assets/:assetId/edit"
+          element={user ? <EditAsset /> : <Navigate to="/sign-in" />}
+        />
+        <Route
+          path="/asset-requests"
+          element={user ? <AssetRequests /> : <Navigate to="/sign-in" />}
+        />
 
         {/* Users */}
         <Route path="/users" element={<UserList />} />
@@ -116,19 +131,32 @@ function App() {
         />
 
         {/* Locations */}
-        <Route path="/locations" element={<LocationList user={user} />} />
-
-        <Route path="/locations/new" element={<LocationForm />} />
-
+        <Route
+          path="/locations"
+          element={
+            user ? <LocationList user={user} /> : <Navigate to="/sign-in" />
+          }
+        />
+        <Route
+          path="/locations/new"
+          element={user ? <LocationForm /> : <Navigate to="/sign-in" />}
+        />
         <Route
           path="/locations/:locationId"
-          element={<LocationDetails user={user} />}
+          element={
+            user ? <LocationDetails user={user} /> : <Navigate to="/sign-in" />
+          }
+        />
+        <Route
+          path="/locations/:locationId/edit"
+          element={user ? <LocationForm /> : <Navigate to="/sign-in" />}
         />
 
-        <Route path="/locations/:locationId/edit" element={<LocationForm />} />
-
         {/* Profile */}
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={user ? <Profile /> : <Navigate to="/sign-in" />}
+        />
       </Routes>
     </div>
   );

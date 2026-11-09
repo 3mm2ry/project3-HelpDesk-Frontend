@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Navigate, Route, Routes } from "react-router";
 
@@ -63,10 +62,7 @@ function App() {
 
         <Route path="/sign-up" element={<SignupPage />} />
 
-        <Route
-          path="/sign-in"
-          element={<SignInPage setUser={setUser} />}
-        />
+        <Route path="/sign-in" element={<SignInPage setUser={setUser} />} />
 
         <Route
           path="/dashboard"
@@ -80,64 +76,49 @@ function App() {
 
         <Route path="/tickets/new" element={<CreateTicket />} />
 
-        <Route
-          path="/tickets/:ticketId"
-          element={<TicketDetails />}
-        />
+        <Route path="/tickets/:ticketId" element={<TicketDetails />} />
 
-        <Route
-          path="/tickets/:ticketId/edit"
-          element={<EditTicket />}
-        />
+        <Route path="/tickets/:ticketId/edit" element={<EditTicket />} />
 
-        <Route
-          path="/tickets/:ticketId/comments"
-          element={<Comments />}
-        />
+        <Route path="/tickets/:ticketId/comments" element={<Comments />} />
 
         {/* Assets */}
-        <Route path="/assets" element={<AssetList />} />
-
-        <Route path="/assets/new" element={<CreateAsset />} />
-
+        <Route
+          path="/assets"
+          element={
+            user ? <AssetList user={user} /> : <Navigate to="/sign-in" />
+          }
+        />
+        <Route
+          path="/assets/new"
+          element={user ? <CreateAsset /> : <Navigate to="/sign-in" />}
+        />
         <Route
           path="/assets/:assetId"
-          element={<AssetDetails />}
+          element={
+            user ? <AssetDetails user={user} /> : <Navigate to="/sign-in" />
+          }
         />
-
         <Route
           path="/assets/:assetId/edit"
-          element={<EditAsset />}
+          element={user ? <EditAsset /> : <Navigate to="/sign-in" />}
         />
-
         <Route
           path="/asset-requests"
-          element={<AssetRequests />}
+          element={user ? <AssetRequests /> : <Navigate to="/sign-in" />}
         />
 
         {/* Users */}
         <Route path="/users" element={<UserList />} />
 
-        <Route
-          path="/users/:userId"
-          element={<UserDetails />}
-        />
+        <Route path="/users/:userId" element={<UserDetails />} />
 
-        <Route
-          path="/users/:userId/edit"
-          element={<EditUser />}
-        />
+        <Route path="/users/:userId/edit" element={<EditUser />} />
 
         {/* Departments */}
-        <Route
-          path="/departments"
-          element={<DepartmentList />}
-        />
+        <Route path="/departments" element={<DepartmentList />} />
 
-        <Route
-          path="/departments/new"
-          element={<DepartmentForm />}
-        />
+        <Route path="/departments/new" element={<DepartmentForm />} />
 
         <Route
           path="/departments/:departmentId"
@@ -152,26 +133,30 @@ function App() {
         {/* Locations */}
         <Route
           path="/locations"
-          element={<LocationList />}
+          element={
+            user ? <LocationList user={user} /> : <Navigate to="/sign-in" />
+          }
         />
-
         <Route
           path="/locations/new"
-          element={<LocationForm />}
+          element={user ? <LocationForm /> : <Navigate to="/sign-in" />}
         />
-
         <Route
           path="/locations/:locationId"
-          element={<LocationDetails />}
+          element={
+            user ? <LocationDetails user={user} /> : <Navigate to="/sign-in" />
+          }
         />
-
         <Route
           path="/locations/:locationId/edit"
-          element={<LocationForm />}
+          element={user ? <LocationForm /> : <Navigate to="/sign-in" />}
         />
 
         {/* Profile */}
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={user ? <Profile /> : <Navigate to="/sign-in" />}
+        />
       </Routes>
     </div>
   );

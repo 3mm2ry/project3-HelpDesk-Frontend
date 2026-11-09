@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { createAsset } from "../../services/";
+import { createAsset } from "../../services/assetServices";
 
 function CreateAsset() {
   const [formData, setFormData] = useState({

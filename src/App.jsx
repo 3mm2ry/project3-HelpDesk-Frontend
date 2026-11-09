@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Navigate, Route, Routes } from "react-router";
 
@@ -63,10 +62,7 @@ function App() {
 
         <Route path="/sign-up" element={<SignupPage />} />
 
-        <Route
-          path="/sign-in"
-          element={<SignInPage setUser={setUser} />}
-        />
+        <Route path="/sign-in" element={<SignInPage setUser={setUser} />} />
 
         <Route
           path="/dashboard"
@@ -80,64 +76,34 @@ function App() {
 
         <Route path="/tickets/new" element={<CreateTicket />} />
 
-        <Route
-          path="/tickets/:ticketId"
-          element={<TicketDetails />}
-        />
+        <Route path="/tickets/:ticketId" element={<TicketDetails />} />
 
-        <Route
-          path="/tickets/:ticketId/edit"
-          element={<EditTicket />}
-        />
+        <Route path="/tickets/:ticketId/edit" element={<EditTicket />} />
 
-        <Route
-          path="/tickets/:ticketId/comments"
-          element={<Comments />}
-        />
+        <Route path="/tickets/:ticketId/comments" element={<Comments />} />
 
         {/* Assets */}
-        <Route path="/assets" element={<AssetList />} />
+        <Route path="/assets" element={<AssetList user={user} />} />
 
         <Route path="/assets/new" element={<CreateAsset />} />
 
-        <Route
-          path="/assets/:assetId"
-          element={<AssetDetails />}
-        />
+        <Route path="/assets/:assetId" element={<AssetDetails user={user} />} />
 
-        <Route
-          path="/assets/:assetId/edit"
-          element={<EditAsset />}
-        />
+        <Route path="/assets/:assetId/edit" element={<EditAsset />} />
 
-        <Route
-          path="/asset-requests"
-          element={<AssetRequests />}
-        />
+        <Route path="/asset-requests" element={<AssetRequests />} />
 
         {/* Users */}
         <Route path="/users" element={<UserList />} />
 
-        <Route
-          path="/users/:userId"
-          element={<UserDetails />}
-        />
+        <Route path="/users/:userId" element={<UserDetails />} />
 
-        <Route
-          path="/users/:userId/edit"
-          element={<EditUser />}
-        />
+        <Route path="/users/:userId/edit" element={<EditUser />} />
 
         {/* Departments */}
-        <Route
-          path="/departments"
-          element={<DepartmentList />}
-        />
+        <Route path="/departments" element={<DepartmentList />} />
 
-        <Route
-          path="/departments/new"
-          element={<DepartmentForm />}
-        />
+        <Route path="/departments/new" element={<DepartmentForm />} />
 
         <Route
           path="/departments/:departmentId"
@@ -150,25 +116,16 @@ function App() {
         />
 
         {/* Locations */}
-        <Route
-          path="/locations"
-          element={<LocationList />}
-        />
+        <Route path="/locations" element={<LocationList user={user} />} />
 
-        <Route
-          path="/locations/new"
-          element={<LocationForm />}
-        />
+        <Route path="/locations/new" element={<LocationForm />} />
 
         <Route
           path="/locations/:locationId"
-          element={<LocationDetails />}
+          element={<LocationDetails user={user} />}
         />
 
-        <Route
-          path="/locations/:locationId/edit"
-          element={<LocationForm />}
-        />
+        <Route path="/locations/:locationId/edit" element={<LocationForm />} />
 
         {/* Profile */}
         <Route path="/profile" element={<Profile />} />

@@ -14,14 +14,31 @@ function CreateAsset() {
 
   const navigate = useNavigate();
 
+  const [images, setImages] = useState([]);
+
   function handleChange(event) {
     setFormData({ ...formData, [event.target.name]: event.target.value });
+  }
+
+  function handleImageChange(event) {
+    setImages(event.target.files);
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
     try {
-      await createAsset(formData);
+      const assetData = new FormData();
+      assetData.append("assetTag", formData.assetTag);
+      assetData.append("name", formData.name);
+      assetData.append("category", formData.category);
+      assetData.append("serialNumber", formData.serialNumber);
+      assetData.append("status", formData.status);
+
+      for (let image of images) {
+        assetData.append("images", image);
+      }
+      await createAsset(assetData);
+      // await createAsset(formData);
       navigate("/assets");
     } catch (err) {
       setError(err.response.data.message);
@@ -95,6 +112,16 @@ function CreateAsset() {
           <option value="Under Maintenance">Under Maintenance</option>
           <option value="Retired">Retired</option>
         </select>
+
+        <label htmlFor="images">Images (max 5):</label>
+        <input
+          type="file"
+          name="images"
+          id="images"
+          accept="image/*"
+          multiple
+          onChange={handleImageChange}
+        />
 
         <button>Create Asset</button>
       </form>

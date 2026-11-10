@@ -86,6 +86,21 @@ function AssetDetails({ user }) {
             <b>Status:</b> {asset.status}
           </p>
 
+          {asset.images.length > 0 ? (
+            <div>
+              {asset.images.map((image) => (
+                <img
+                  key={image}
+                  src={`${import.meta.env.VITE_BACK_END_SERVER_URL}${image}`}
+                  alt={asset.name}
+                  width="200"
+                />
+              ))}
+            </div>
+          ) : (
+            <p>No images</p>
+          )}
+
           {isStaff ? (
             <>
               <p>

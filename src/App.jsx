@@ -71,16 +71,35 @@ function App() {
           }
         />
 
-        {/* Tickets */}
-        <Route path="/tickets" element={<TicketList />} />
+       
+{/* Tickets */}
+<Route
+  path="/tickets"
+  element={
+    user ? <TicketList user={user} /> : <Navigate to="/sign-in" />
+  }
+/>
 
-        <Route path="/tickets/new" element={<CreateTicket />} />
+<Route
+  path="/tickets/new"
+  element={user ? <CreateTicket /> : <Navigate to="/sign-in" />}
+/>
 
-        <Route path="/tickets/:ticketId" element={<TicketDetails />} />
+<Route
+  path="/tickets/:ticketId"
+  element={user ? <TicketDetails /> : <Navigate to="/sign-in" />}
+/>
 
-        <Route path="/tickets/:ticketId/edit" element={<EditTicket />} />
+<Route
+  path="/tickets/:ticketId/edit"
+  element={user ? <EditTicket /> : <Navigate to="/sign-in" />}
+/>
 
-        <Route path="/tickets/:ticketId/comments" element={<Comments />} />
+<Route
+  path="/tickets/:ticketId/comments"
+  element={user ? <Comments /> : <Navigate to="/sign-in" />}
+/>
+
 
         {/* Assets */}
         <Route

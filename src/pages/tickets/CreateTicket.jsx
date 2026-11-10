@@ -32,8 +32,20 @@ function CreateTicket() {
   async function handleSubmit(event) {
     event.preventDefault();
 
+   /*  // we can't use this way because we have image in the form */
+
+/*       async function handleSubmit(event) {
+    event.preventDefault();
+
+    const createdTicket = await createNewTicket(formData, images);
+
+    navigate("/tickets");
+  } */
+
+
     // Create FormData to send ticket details and images
     const ticketData = new FormData();
+
 
     // Add ticket details
     ticketData.append("title", formData.title);
@@ -113,7 +125,7 @@ function CreateTicket() {
           name="contactMethod"
           id="contactMethod"
         >
-          <option value="Message">Message</option>
+          <option value="Message">Ticket Replay</option>
           <option value="Phone">Phone</option>
         </select>
 

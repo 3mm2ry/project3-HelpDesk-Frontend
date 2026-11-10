@@ -64,7 +64,7 @@ function AssetDetails({ user }) {
       setError(err.response.data.message);
     }
   }
-
+  // for commit to commit
   return (
     <div>
       <h1>Asset Details</h1>

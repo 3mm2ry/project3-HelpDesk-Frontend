@@ -11,6 +11,7 @@ function EditAsset() {
     status: "",
   });
   const [error, setError] = useState("");
+  const [images, setImages] = useState([]);
 
   const { assetId } = useParams();
   const navigate = useNavigate();
@@ -25,7 +26,9 @@ function EditAsset() {
       status: response.status,
     });
   }
-
+  function handleImageChange(event) {
+    setImages(event.target.files);
+  }
   useEffect(() => {
     loadAsset();
   }, []);
@@ -37,7 +40,18 @@ function EditAsset() {
   async function handleSubmit(event) {
     event.preventDefault();
     try {
-      await updateAsset(assetId, formData);
+      const assetData = new FormData();
+      assetData.append("assetTag", formData.assetTag);
+      assetData.append("name", formData.name);
+      assetData.append("category", formData.category);
+      assetData.append("serialNumber", formData.serialNumber);
+      assetData.append("status", formData.status);
+
+      for (let image of images) {
+        assetData.append("images", image);
+      }
+
+      await updateAsset(assetId, assetData);
       navigate(`/assets/${assetId}`);
     } catch (err) {
       setError(err.response.data.message);
@@ -110,6 +124,16 @@ function EditAsset() {
           <option value="Under Maintenance">Under Maintenance</option>
           <option value="Retired">Retired</option>
         </select>
+
+        <label htmlFor="images">Images (max 5):</label>
+        <input
+          type="file"
+          name="images"
+          id="images"
+          accept="image/*"
+          multiple
+          onChange={handleImageChange}
+        />
 
         <button>Update Asset</button>
         <button type="button" onClick={() => navigate(`/assets/${assetId}`)}>

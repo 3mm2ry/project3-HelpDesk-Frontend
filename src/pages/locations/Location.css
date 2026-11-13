@@ -42,3 +42,25 @@
   pointer-events: none;
   z-index: 1;
 }
+.map-layout {
+  display: flex;
+  gap: 20px;
+}
+
+.location-sidebar {
+  width: 220px;
+  height: 397px;
+  overflow-y: auto;
+}
+
+.location-sidebar button {
+  display: block;
+  width: 100%;
+  margin-bottom: 4px;
+  text-align: left;
+}
+
+.pin-selected {
+  border-color: yellow;
+  transform: scale(1.5);
+}

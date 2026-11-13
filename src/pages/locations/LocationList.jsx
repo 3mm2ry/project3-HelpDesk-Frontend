@@ -19,6 +19,7 @@ function LocationList({ user }) {
   const [profile, setProfile] = useState(null);
   const [selectedFloor, setSelectedFloor] = useState(0);
   const [hoveredLocation, setHoveredLocation] = useState(null);
+  const [selectedLocationId, setSelectedLocationId] = useState(null);
 
   const navigate = useNavigate();
 
@@ -79,9 +80,24 @@ function LocationList({ user }) {
   function getPinClass(oneLocation) {
     const count = getTicketsForLocation(oneLocation._id).length;
 
-    if (count > 0) return "map-pin pin-red";
-    if (isStaff) return "map-pin pin-grey";
-    return "map-pin pin-blue";
+    let pinClass = "map-pin pin-blue";
+
+    if (count > 0) {
+      pinClass = "map-pin pin-red";
+    } else if (isStaff) {
+      pinClass = "map-pin pin-grey";
+    }
+
+    if (oneLocation._id === selectedLocationId) {
+      pinClass = pinClass + " pin-selected";
+    }
+
+    return pinClass;
+  }
+
+  function handleLocationClick(oneLocation) {
+    setSelectedFloor(oneLocation.floor);
+    setSelectedLocationId(oneLocation._id);
   }
 
   let pins = [];
@@ -99,9 +115,11 @@ function LocationList({ user }) {
   return (
     <div>
       <h1>Office Map</h1>
+
       {user.role === "Admin" ? (
         <Link to="/locations/new">Add Location</Link>
       ) : null}
+
       {isStaff ? (
         <div>
           {floorNames.map((floorName, index) => (
@@ -114,65 +132,87 @@ function LocationList({ user }) {
           ))}
         </div>
       ) : null}
+
       {!isStaff && profile && !profile.location ? (
         <p>You don't have a location yet. Ask an admin to set it.</p>
       ) : null}
+
       <h3>Showing: {floorNames[floorToShow]} floor</h3>
-      <div
-        className="office-map"
-        style={{ backgroundImage: `url(${floorImages[floorToShow]})` }}
-      >
-        {pins.map((oneLocation) => (
-          <div
-            key={oneLocation._id}
-            className={getPinClass(oneLocation)}
-            style={{
-              left: `${oneLocation.coordinates.x}%`,
-              top: `${oneLocation.coordinates.y}%`,
-            }}
-            onMouseEnter={() => setHoveredLocation(oneLocation)}
-            onMouseLeave={() => setHoveredLocation(null)}
-            onClick={() =>
-              isStaff ? navigate(`/locations/${oneLocation._id}`) : null
-            }
-          >
-            {getTicketsForLocation(oneLocation._id).length > 1
-              ? getTicketsForLocation(oneLocation._id).length
-              : null}
-          </div>
-        ))}
 
-        {hoveredLocation ? (
-          <div
-            className="map-info"
-            style={{
-              left: `${hoveredLocation.coordinates.x}%`,
-              top: `${hoveredLocation.coordinates.y}%`,
-            }}
-          >
-            {!isStaff ? (
-              <p>
-                <b>You are here</b>
-              </p>
-            ) : null}
-            <p>
-              <b>Room:</b> {hoveredLocation.officeNumber}
-            </p>
-            <p>
-              <b>Floor:</b> {floorNames[hoveredLocation.floor]}
-            </p>
-
-            {getTicketsForLocation(hoveredLocation._id).map((oneTicket) => (
-              <p key={oneTicket._id}>
-                🔴 {oneTicket.title}
-                {isStaff ? ` - ${oneTicket.createdBy.username}` : null}
-              </p>
+      <div className="map-layout">
+        {isStaff ? (
+          <div className="location-sidebar">
+            <h3>Rooms</h3>
+            {locations.map((oneLocation) => (
+              <button
+                key={oneLocation._id}
+                onClick={() => handleLocationClick(oneLocation)}
+              >
+                {oneLocation.officeNumber}{" "}
+                {getTicketsForLocation(oneLocation._id).length > 0
+                  ? `- ${getTicketsForLocation(oneLocation._id).length} Ticket`
+                  : null}
+              </button>
             ))}
           </div>
         ) : null}
+
+        <div
+          className="office-map"
+          style={{ backgroundImage: `url(${floorImages[floorToShow]})` }}
+        >
+          {pins.map((oneLocation) => (
+            <div
+              key={oneLocation._id}
+              className={getPinClass(oneLocation)}
+              style={{
+                left: `${oneLocation.coordinates.x}%`,
+                top: `${oneLocation.coordinates.y}%`,
+              }}
+              onMouseEnter={() => setHoveredLocation(oneLocation)}
+              onMouseLeave={() => setHoveredLocation(null)}
+              onClick={() =>
+                isStaff ? navigate(`/locations/${oneLocation._id}`) : null
+              }
+            >
+              {getTicketsForLocation(oneLocation._id).length > 1
+                ? getTicketsForLocation(oneLocation._id).length
+                : null}
+            </div>
+          ))}
+
+          {hoveredLocation ? (
+            <div
+              className="map-info"
+              style={{
+                left: `${hoveredLocation.coordinates.x}%`,
+                top: `${hoveredLocation.coordinates.y}%`,
+              }}
+            >
+              {!isStaff ? (
+                <p>
+                  <b>You are here</b>
+                </p>
+              ) : null}
+              <p>
+                <b>Room:</b> {hoveredLocation.officeNumber}
+              </p>
+              <p>
+                <b>Floor:</b> {floorNames[hoveredLocation.floor]}
+              </p>
+
+              {getTicketsForLocation(hoveredLocation._id).map((oneTicket) => (
+                <p key={oneTicket._id}>
+                  🔴 {oneTicket.title}
+                  {isStaff ? ` - ${oneTicket.createdBy.username}` : null}
+                </p>
+              ))}
+            </div>
+          ) : null}
+        </div>
       </div>
-      {/* // here IF the admin forgot to locate the new emp and the ep suppmeted a
-      ticket */}
+
+      {/* if the admin forgot to set a location for a new employee and they submitted a ticket */}
       {isStaff && ticketsWithoutLocation.length > 0 ? (
         <div>
           <h3>Tickets without a location</h3>

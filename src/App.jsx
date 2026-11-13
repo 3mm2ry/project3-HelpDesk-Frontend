@@ -157,7 +157,13 @@ function App() {
         />
         <Route
           path="/locations/new"
-          element={user ? <LocationForm /> : <Navigate to="/sign-in" />}
+          element={
+            user && user.role === "Admin" ? (
+              <CreateLocation />
+            ) : (
+              <Navigate to="/locations" />
+            )
+          }
         />
         <Route
           path="/locations/:locationId"
@@ -167,7 +173,13 @@ function App() {
         />
         <Route
           path="/locations/:locationId/edit"
-          element={user ? <LocationForm /> : <Navigate to="/sign-in" />}
+          element={
+            user && user.role === "Admin" ? (
+              <EditLocation />
+            ) : (
+              <Navigate to="/locations" />
+            )
+          }
         />
 
         {/* Profile */}

@@ -34,6 +34,8 @@ import LocationForm from "./pages/locations/LocationForm";
 
 import Profile from "./pages/Profile";
 
+import AIAssistant from "./pages/ai/AIAssistant";
+
 import { logout } from "./services/authService";
 
 function App() {
@@ -175,6 +177,12 @@ function App() {
         <Route
           path="/profile"
           element={user ? <Profile /> : <Navigate to="/sign-in" />}
+        />
+
+        {/* AI Assistant */}
+        <Route
+          path="/ai-assistant"
+          element={user ? <AIAssistant /> : <Navigate to="/sign-in" />}
         />
       </Routes>
     </div>

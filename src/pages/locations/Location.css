@@ -1,0 +1,77 @@
+.office-map {
+  position: relative;
+  width: 807px;
+  height: 397px;
+  background-size: 100% 100%;
+}
+
+.map-pin {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  margin-left: -11px;
+  margin-top: -11px;
+  border: 2px solid white;
+  border-radius: 50%;
+  color: white;
+  font-size: 11px;
+  text-align: center;
+  line-height: 18px;
+  cursor: pointer;
+}
+
+.pin-grey {
+  background-color: grey;
+}
+
+.pin-blue {
+  background-color: #3b82f6;
+}
+
+.pin-red {
+  background-color: red;
+  animation: pulse 1.5s infinite;
+}
+
+.map-info {
+  position: absolute;
+  width: 200px;
+  margin-left: 15px;
+  padding: 5px 10px;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.map-layout {
+  display: flex;
+  gap: 20px;
+}
+
+.location-sidebar {
+  width: 220px;
+  height: 397px;
+  overflow-y: auto;
+}
+
+.location-sidebar button {
+  display: block;
+  width: 100%;
+  margin-bottom: 4px;
+  text-align: left;
+}
+
+.pin-selected {
+  border-color: yellow;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 15px rgba(255, 0, 0, 0);
+  }
+}

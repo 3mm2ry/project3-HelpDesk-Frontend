@@ -30,7 +30,8 @@ import DepartmentForm from "./pages/departments/DepartmentForm";
 
 import LocationList from "./pages/locations/LocationList";
 import LocationDetails from "./pages/locations/LocationDetails";
-import LocationForm from "./pages/locations/LocationForm";
+import CreateLocation from "./pages/locations/CreateLocation";
+import EditLocation from "./pages/locations/EditLocation";
 
 import Profile from "./pages/Profile";
 
@@ -73,35 +74,33 @@ function App() {
           }
         />
 
-       
-{/* Tickets */}
-<Route
-  path="/tickets"
-  element={
-    user ? <TicketList user={user} /> : <Navigate to="/sign-in" />
-  }
-/>
+        {/* Tickets */}
+        <Route
+          path="/tickets"
+          element={
+            user ? <TicketList user={user} /> : <Navigate to="/sign-in" />
+          }
+        />
 
-<Route
-  path="/tickets/new"
-  element={user ? <CreateTicket /> : <Navigate to="/sign-in" />}
-/>
+        <Route
+          path="/tickets/new"
+          element={user ? <CreateTicket /> : <Navigate to="/sign-in" />}
+        />
 
-<Route
-  path="/tickets/:ticketId"
-  element={user ? <TicketDetails /> : <Navigate to="/sign-in" />}
-/>
+        <Route
+          path="/tickets/:ticketId"
+          element={user ? <TicketDetails /> : <Navigate to="/sign-in" />}
+        />
 
-<Route
-  path="/tickets/:ticketId/edit"
-  element={user ? <EditTicket /> : <Navigate to="/sign-in" />}
-/>
+        <Route
+          path="/tickets/:ticketId/edit"
+          element={user ? <EditTicket /> : <Navigate to="/sign-in" />}
+        />
 
-<Route
-  path="/tickets/:ticketId/comments"
-  element={user ? <Comments /> : <Navigate to="/sign-in" />}
-/>
-
+        <Route
+          path="/tickets/:ticketId/comments"
+          element={user ? <Comments /> : <Navigate to="/sign-in" />}
+        />
 
         {/* Assets */}
         <Route
@@ -160,7 +159,13 @@ function App() {
         />
         <Route
           path="/locations/new"
-          element={user ? <LocationForm /> : <Navigate to="/sign-in" />}
+          element={
+            user && user.role === "Admin" ? (
+              <CreateLocation />
+            ) : (
+              <Navigate to="/locations" />
+            )
+          }
         />
         <Route
           path="/locations/:locationId"
@@ -170,7 +175,13 @@ function App() {
         />
         <Route
           path="/locations/:locationId/edit"
-          element={user ? <LocationForm /> : <Navigate to="/sign-in" />}
+          element={
+            user && user.role === "Admin" ? (
+              <EditLocation />
+            ) : (
+              <Navigate to="/locations" />
+            )
+          }
         />
 
         {/* Profile */}

@@ -171,8 +171,8 @@ function LocationList({ user }) {
           </div>
         ) : null}
       </div>
-      // here IF the admin forgot to locate the new emp and the ep suppmeted a
-      ticket
+      {/* // here IF the admin forgot to locate the new emp and the ep suppmeted a
+      ticket */}
       {isStaff && ticketsWithoutLocation.length > 0 ? (
         <div>
           <h3>Tickets without a location</h3>

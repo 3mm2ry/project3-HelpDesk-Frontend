@@ -43,6 +43,10 @@ function LocationList({ user }) {
 
   useEffect(() => {
     loadMap();
+
+    const timer = setInterval(loadMap, 30000);
+
+    return () => clearInterval(timer);
   }, []);
 
   function getTicketLocation(oneTicket) {

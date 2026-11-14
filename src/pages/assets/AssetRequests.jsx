@@ -9,7 +9,7 @@ import {
 
 function AssetRequests() {
   const [assets, setAssets] = useState([]);
-
+  const [error, setError] = useState("");
   async function loadAssets() {
     const response = await getAllAssets();
     setAssets(response);
@@ -56,7 +56,7 @@ function AssetRequests() {
   return (
     <div>
       <h1>Borrow Requests</h1>
-
+      <p className="error">{error}</p>
       <h2>Pending Requests</h2>
       {pendingAssets.length === 0 ? <p>No pending requests.</p> : null}
 

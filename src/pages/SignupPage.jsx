@@ -6,16 +6,18 @@ import { signUp } from "../services/authService";
 function Signup() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
+    phoneNumber: "",
     password: "",
     passwordConf: "",
   });
 
   const [submitting, setSubmitting] = useState(false);
 
-  const { username, email, password, passwordConf } = formData;
+  const { username, email, phoneNumber, password, passwordConf } = formData;
 
   function handleChange(event) {
     setError("");
@@ -39,6 +41,7 @@ function Signup() {
     return !(
       username &&
       email &&
+      phoneNumber &&
       password &&
       password === passwordConf
     );
@@ -70,6 +73,19 @@ function Signup() {
             value={email}
             name="email"
             onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="phoneNumber">Phone Number:</label>
+          <input
+            type="tel"
+            id="phoneNumber"
+            value={phoneNumber}
+            name="phoneNumber"
+            onChange={handleChange}
+            placeholder="+973 XXXXXXXX"
             required
           />
         </div>

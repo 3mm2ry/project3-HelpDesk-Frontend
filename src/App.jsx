@@ -61,7 +61,10 @@ function App() {
 
       <Routes>
         {/* Template Routes */}
-        <Route path="/" element={<Homepage />} />
+        <Route
+          path="/"
+          element={user ? <Navigate to="/dashboard" /> : <Homepage />}
+        />
 
         <Route path="/sign-up" element={<SignupPage />} />
 

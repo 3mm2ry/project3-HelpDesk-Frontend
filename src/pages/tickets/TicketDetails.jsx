@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router";
 import { getTicketById } from "../../services/ticketService";
@@ -21,7 +20,7 @@ function TicketDetails() {
     <div>
       <h1>Ticket Details</h1>
 
-      {ticket &&
+      {ticket && (
         <div>
           <h2>{ticket.title}</h2>
           <p>Description: {ticket.description}</p>
@@ -32,7 +31,7 @@ function TicketDetails() {
 
           <h3>Images</h3>
 
-          {ticket.images.map((image, index) =>
+          {ticket.images.map((image, index) => (
             <div key={index}>
               <img
                 src={`http://localhost:3000${image}`}
@@ -40,7 +39,9 @@ function TicketDetails() {
                 width="200"
               />
             </div>
-          )}
+          ))}
+
+          <Link to={`/tickets/${ticket._id}/edit`}>Edit Ticket</Link>
 
           <h3>Comments</h3>
 
@@ -48,7 +49,7 @@ function TicketDetails() {
             View Comments / Add Comment
           </Link>
         </div>
-      }
+      )}
     </div>
   );
 }

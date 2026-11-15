@@ -94,15 +94,15 @@ function App() {
 
         <Route
           path="/tickets/:ticketId/edit"
-          element={user ? <EditTicket /> : <Navigate to="/sign-in" />}
+          element={
+            user ? <EditTicket user={user} /> : <Navigate to="/sign-in" />
+          }
         />
 
-       <Route
-  path="/tickets/:ticketId/comments"
-  element={
-    user ? <Comments user={user} /> : <Navigate to="/sign-in" />
-  }
-/>
+        <Route
+          path="/tickets/:ticketId/comments"
+          element={user ? <Comments user={user} /> : <Navigate to="/sign-in" />}
+        />
 
         {/* Assets */}
         <Route

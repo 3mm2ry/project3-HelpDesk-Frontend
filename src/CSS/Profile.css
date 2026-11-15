@@ -1,0 +1,23 @@
+/* My Profile page */
+
+.profile-page h2 {
+  margin-top: 25px;
+}
+
+/* one box per asset */
+.profile-page > div {
+  margin-bottom: 15px;
+  padding: 15px 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.profile-page > div p {
+  color: var(--text-muted);
+}
+
+.profile-page > div h3 {
+  margin-top: 0;
+}

@@ -10,7 +10,8 @@ import floor0 from "../../assets/floor-0_1.png";
 import floor1 from "../../assets/floor-1_1.png";
 import floor2 from "../../assets/floor-2_1.png";
 
-import "./Location.css";
+import "../../CSS/Location.css";
+import "../../CSS/Locations.css";
 
 const floorImages = [floor0, floor1, floor2];
 const floorNames = ["Ground", "First", "Second"];
@@ -52,7 +53,7 @@ function LocationDetails({ user }) {
   }
 
   return (
-    <div>
+    <div className="location-page location-details">
       <h1>Location Details</h1>
       <p className="error">{error}</p>
 

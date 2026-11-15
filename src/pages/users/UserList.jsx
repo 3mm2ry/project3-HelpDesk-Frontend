@@ -1,3 +1,4 @@
+import "../../CSS/Users.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { getAllUsers } from "../../services/userService";
@@ -25,7 +26,7 @@ useEffect(() => {
 
 
   return (
-    <div>
+    <div className="page user-list">
       <h1>Users</h1>
       {error ? <p className="error">{error}</p> : null}
 

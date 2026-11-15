@@ -1,3 +1,4 @@
+import "../../CSS/Departments.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { getAllDepartments } from "../../services/departmentService";
@@ -15,7 +16,7 @@ function DepartmentList() {
   }, []);
 
   return (
-    <div>
+    <div className="page department-list">
       <h1>Departments</h1>
       <Link to="/departments/new">Add Department</Link>
 

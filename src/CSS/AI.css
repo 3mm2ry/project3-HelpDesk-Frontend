@@ -1,0 +1,46 @@
+/* AI Assistant chat page */
+
+/* assistant messages */
+.ai-message {
+  max-width: 700px;
+  margin-bottom: 12px;
+  padding: 10px 15px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.ai-message strong {
+  color: var(--primary-light);
+  font-size: 13px;
+}
+
+.ai-message-user strong {
+  color: var(--text-muted);
+}
+
+.ai-message p {
+  margin: 4px 0 0 0;
+}
+
+/* the user's own messages */
+.ai-message-user {
+  border-color: transparent;
+  background: var(--primary-soft);
+}
+
+/* message box and Send button on one line */
+.ai-page form {
+  flex-direction: row;
+  max-width: 700px;
+  margin-top: 15px;
+}
+
+.ai-page form input {
+  flex: 1;
+}
+
+.ai-page form button {
+  align-self: auto;
+  margin: 0;
+}

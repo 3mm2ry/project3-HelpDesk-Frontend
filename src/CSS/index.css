@@ -1,0 +1,111 @@
+/* Google Font (must stay the first line of this file) */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* =========================================================
+   THEME — every color in the app comes from these variables.
+   Change a value here and the whole site updates.
+   ========================================================= */
+:root {
+  color-scheme: dark; /* makes dropdowns, scrollbars and date pickers dark too */
+
+  /* backgrounds */
+  --bg: #0b1120;          /* page */
+  --surface: #111a2e;     /* cards, navbar */
+  --surface-2: #18233b;   /* inputs, hover */
+  --surface-3: #1f2c48;   /* stronger hover */
+  --border: #26344f;
+  --border-strong: #34476b;
+
+  /* text */
+  --text: #e6ebf5;
+  --text-muted: #94a3b8;
+  --heading: #f8fafc;
+
+  /* main brand color (blue) */
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-light: #60a5fa;           /* links on dark background */
+  --primary-soft: rgba(59, 130, 246, 0.14);
+
+  /* ticket status colors */
+  --status-open: #38bdf8;             /* sky blue */
+  --status-open-soft: rgba(56, 189, 248, 0.14);
+  --status-progress: #f59e0b;         /* amber */
+  --status-progress-soft: rgba(245, 158, 11, 0.14);
+  --status-resolved: #22c55e;         /* green */
+  --status-resolved-soft: rgba(34, 197, 94, 0.14);
+  --status-closed: #94a3b8;           /* grey */
+  --status-closed-soft: rgba(148, 163, 184, 0.14);
+  --status-urgent: #ef4444;           /* red */
+  --status-urgent-soft: rgba(239, 68, 68, 0.14);
+
+  /* feedback */
+  --danger: #f87171;
+  --danger-soft: rgba(248, 113, 113, 0.12);
+  --focus: #93c5fd;
+
+  /* shape */
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 14px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --transition: 0.18s ease;
+}
+
+/* ----- Whole page ----- */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--heading);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--primary-light);
+}
+
+/* keyboard users can always see where they are */
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--primary);
+  color: white;
+}
+
+/* ----- Error messages ----- */
+.error {
+  color: var(--danger);
+}
+
+.error:not(:empty) {
+  padding: 10px 14px;
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  border-radius: var(--radius-sm);
+  background: var(--danger-soft);
+}
+
+nav a {
+  margin-right: 10px;
+}
+
+/* respect users who turned off animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

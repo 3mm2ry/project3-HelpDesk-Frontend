@@ -1,0 +1,82 @@
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(17, 26, 46, 0.85);
+  backdrop-filter: blur(8px);
+  /* navbar stays at the top while scrolling */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav a {
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition);
+}
+
+nav a:hover {
+  background: var(--surface-2);
+  color: var(--heading);
+}
+
+nav img {
+  display: block;
+  border-radius: 50%;
+  border: 2px solid var(--border-strong);
+  transition: border-color var(--transition);
+}
+
+/* the profile picture link goes after the Sign Out button */
+nav a:has(img) {
+  order: 2;
+  padding: 2px;
+}
+
+nav a:has(img):hover {
+  background: none;
+}
+
+nav a:has(img):hover img {
+  border-color: var(--primary-light);
+}
+
+nav button {
+  /* margin-left: auto pushes Sign Out + picture to the right corner */
+  order: 1;
+  margin-left: auto;
+  padding: 6px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+nav button:hover {
+  background: var(--danger-soft);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+@media (max-width: 600px) {
+  nav {
+    padding: 10px 12px;
+  }
+
+  nav a {
+    margin-right: 0;
+    font-size: 14px;
+  }
+}

@@ -1,3 +1,4 @@
+import "../../../CSS/Tickets.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import {
@@ -81,7 +82,7 @@ function Comments({ user }) {
   }
 
   return (
-    <div>
+    <div className="page ticket-comments">
       <h1>Ticket Comments</h1>
 
       <h2>All Comments</h2>

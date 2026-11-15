@@ -1,8 +1,9 @@
+import "../../CSS/Tickets.css";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router";
 import { getTicketById } from "../../services/ticketService";
 
-function TicketDetails() {
+function TicketDetails({ user }) {
   const { ticketId } = useParams();
 
   const [ticket, setTicket] = useState(null);
@@ -17,7 +18,7 @@ function TicketDetails() {
   }, []);
 
   return (
-    <div>
+    <div className="page ticket-details">
       <h1>Ticket Details</h1>
 
       {ticket && (
@@ -28,6 +29,13 @@ function TicketDetails() {
           <p>Priority: {ticket.priority}</p>
           <p>Status: {ticket.status}</p>
           <p>Contact Method: {ticket.contactMethod}</p>
+
+          {(user.role === "Admin" || user.role === "IT-Staff") && ticket.createdBy ? (
+            <>
+              <p>Created By: {ticket.createdBy.username}</p>
+              <p>Phone Number: {ticket.createdBy.phoneNumber || "Not provided"}</p>
+            </>
+          ) : null}
 
           <h3>Images</h3>
 

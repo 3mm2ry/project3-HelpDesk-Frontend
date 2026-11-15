@@ -1,0 +1,149 @@
+/* Office Map + Location Details pages.
+   The map itself (pins, sidebar layout, popup) is in Location.css. */
+
+.location-page {
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.location-page a {
+  color: var(--primary-light);
+}
+
+/* "Add Location" / "Edit Location" links look like outline buttons */
+.location-page > a {
+  display: inline-block;
+  margin: 0 10px 15px 0;
+  padding: 8px 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.location-page > a:hover {
+  background: var(--surface-2);
+  border-color: var(--primary-light);
+}
+
+/* Delete / Back to Map buttons */
+.location-page > button {
+  margin-right: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  background: var(--primary);
+  color: white;
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.location-page > button:hover {
+  background: var(--primary-hover);
+}
+
+/* ----- Floor buttons (Ground / First / Second) ----- */
+.floor-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.floor-buttons button {
+  padding: 8px 20px;
+  border: 1px solid var(--border-strong);
+  border-radius: 20px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.floor-buttons button:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.location-page h3 {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* ----- Rooms list beside the map ----- */
+.location-sidebar h3 {
+  margin-top: 0;
+}
+
+.location-sidebar button {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.location-sidebar button:hover {
+  background: var(--surface-2);
+  border-color: var(--primary-light);
+}
+
+/* ----- Map ----- */
+.location-page .office-map {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+/* ----- Location Details: one box per active ticket ----- */
+.location-details > div:not(.office-map) {
+  margin-bottom: 15px;
+  padding: 15px 20px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--status-urgent);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.location-details > div h4 {
+  margin-top: 0;
+}
+
+.location-details p b {
+  color: var(--text-muted);
+}
+
+/* ----- Phones / small screens: the map is a fixed 807px picture,
+   so the map area scrolls sideways instead of breaking the page ----- */
+@media (max-width: 1100px) {
+  .map-layout {
+    flex-wrap: wrap;
+  }
+
+  .location-page {
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .location-page {
+    padding: 16px;
+  }
+
+  .location-sidebar {
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+  }
+}

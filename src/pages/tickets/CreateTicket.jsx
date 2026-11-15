@@ -66,7 +66,7 @@ function CreateTicket() {
   }
 
   return (
-    <div>
+    <div className="page ticket-form">
       <h1>Create Ticket</h1>
 
       <form onSubmit={handleSubmit}>

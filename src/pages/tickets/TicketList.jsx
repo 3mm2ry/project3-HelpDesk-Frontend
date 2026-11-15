@@ -1,3 +1,4 @@
+import "../../CSS/Tickets.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { getAllTickets } from "../../services/ticketService";
@@ -17,7 +18,7 @@ function TicketList({ user }) {
   }, []);
 
   return (
-    <div>
+    <div className="page ticket-list">
       <h1>All Tickets</h1>
 
       {tickets.map((oneTicket) =>

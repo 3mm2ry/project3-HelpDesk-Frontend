@@ -41,7 +41,7 @@ function CreateLocation() {
   }
 
   return (
-    <div>
+    <div className="page location-form">
       <h1>Create Location</h1>
       <p className="error">{error}</p>
 

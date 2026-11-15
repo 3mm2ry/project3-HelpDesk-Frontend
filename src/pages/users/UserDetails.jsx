@@ -1,3 +1,4 @@
+import "../../CSS/Users.css";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router";
 import { getUserById, deleteUser } from "../../services/userService";
@@ -35,7 +36,7 @@ async function handleDelete() {
 
 
   return (
-    <div>
+    <div className="page user-details">
   <h1>User Details</h1>
 
   {error ? <p className="error">{error}</p> : null}

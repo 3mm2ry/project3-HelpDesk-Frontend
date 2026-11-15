@@ -1,3 +1,4 @@
+import "../../CSS/AI.css";
 import { useState } from "react";
 import { Link } from "react-router";
 import { sendChat } from "../../services/aiService";
@@ -29,12 +30,15 @@ function AIAssistant() {
   }
 
   return (
-    <div>
+    <div className="page ai-page">
       <h1>AI Assistant</h1>
       <p>Describe your IT problem and I will suggest steps to fix it.</p>
 
       {messages.map((oneMessage, index) => (
-        <div key={index}>
+        <div
+          key={index}
+          className={oneMessage.role === "user" ? "ai-message ai-message-user" : "ai-message"}
+        >
           <strong>{oneMessage.role === "user" ? "You" : "Assistant"}:</strong>
           <p style={{ whiteSpace: "pre-wrap" }}>{oneMessage.text}</p>
         </div>

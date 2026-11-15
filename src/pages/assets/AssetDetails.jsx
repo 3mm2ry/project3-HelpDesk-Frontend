@@ -1,3 +1,4 @@
+import "../../CSS/Assets.css";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 import {
@@ -66,7 +67,7 @@ function AssetDetails({ user }) {
   }
   // for commit to commit
   return (
-    <div>
+    <div className="page asset-details">
       <h1>Asset Details</h1>
       <p className="error">{error}</p>
 

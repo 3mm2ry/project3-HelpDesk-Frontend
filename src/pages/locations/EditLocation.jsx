@@ -61,7 +61,7 @@ function EditLocation() {
   }
 
   return (
-    <div>
+    <div className="page location-form">
       <h1>Edit Location</h1>
       <p className="error">{error}</p>
 

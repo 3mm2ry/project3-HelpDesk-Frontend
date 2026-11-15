@@ -68,7 +68,7 @@ async function handleSubmit(event) {
 
 
   return (
-    <div>
+    <div className="page user-form">
   <h1>Edit User</h1>
 
   <form onSubmit={handleSubmit}>

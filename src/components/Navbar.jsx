@@ -1,4 +1,3 @@
-
 import { Link } from "react-router";
 
 import employeeImg from "../assets/employee.png";
@@ -29,6 +28,8 @@ function Navbar({ user, handleLogout }) {
           <Link to="/assets">Assets</Link>
 
           <Link to="/locations">Locations</Link>
+
+          <Link to="/ai-assistant">AI Assistant</Link>
 
           {user.role === "IT-Staff" || user.role === "Admin" ? (
             <Link to="/asset-requests">Asset Requests</Link>

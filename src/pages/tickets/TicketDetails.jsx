@@ -1,5 +1,6 @@
+
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { getTicketById } from "../../services/ticketService";
 
 function TicketDetails() {
@@ -40,6 +41,12 @@ function TicketDetails() {
               />
             </div>
           )}
+
+          <h3>Comments</h3>
+
+          <Link to={`/tickets/${ticket._id}/comments`}>
+            View Comments / Add Comment
+          </Link>
         </div>
       }
     </div>

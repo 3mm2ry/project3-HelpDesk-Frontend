@@ -1,9 +1,10 @@
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
-import {getTicketById,updateTicketById} from "../../services/ticketService";
+import { getTicketById, updateTicketById } from "../../services/ticketService";
 
-function EditTicket() {
+function EditTicket({ user }) {
+  const isStaff = user.role === "Admin" || user.role === "IT-Staff";
+
   const { ticketId } = useParams();
 
   const navigate = useNavigate();
@@ -51,6 +52,10 @@ function EditTicket() {
     ticketData.append("category", formData.category);
     ticketData.append("priority", formData.priority);
     ticketData.append("contactMethod", formData.contactMethod);
+
+    if (isStaff) {
+      ticketData.append("status", formData.status);
+    }
 
     for (let i = 0; i < images.length && i < 5; i++) {
       ticketData.append("images", images[i]);
@@ -123,6 +128,23 @@ function EditTicket() {
           <option value="Email">Email</option>
           <option value="Phone">Phone</option>
         </select>
+
+        {isStaff ? (
+          <>
+            <label htmlFor="status">Status</label>
+            <select
+              name="status"
+              id="status"
+              value={formData.status}
+              onChange={handleChange}
+            >
+              <option value="Open">Open</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Resolved">Resolved</option>
+              <option value="Closed">Closed</option>
+            </select>
+          </>
+        ) : null}
 
         <label htmlFor="images">Add New Images</label>
         <input

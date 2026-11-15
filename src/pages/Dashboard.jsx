@@ -11,6 +11,8 @@ function Dashboard({ user }) {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
 
+  ////
+
   async function loadData() {
     try {
       setTickets(await getAllTickets());

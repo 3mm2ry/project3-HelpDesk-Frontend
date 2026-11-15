@@ -1,4 +1,5 @@
 
+import "../CSS/Auth.css";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { signUp } from "../services/authService";
@@ -48,7 +49,7 @@ function Signup() {
   }
 
   return (
-    <main>
+    <main className="page auth-page">
       <h1>Sign Up</h1>
       <p className="error">{error}</p>
 

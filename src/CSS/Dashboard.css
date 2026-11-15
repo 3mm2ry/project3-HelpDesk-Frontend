@@ -1,0 +1,132 @@
+.dashboard {
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.dashboard > p:not(.error) {
+  color: var(--text-muted);
+}
+
+.dashboard > p strong {
+  color: var(--primary-light);
+}
+
+.dashboard h2 {
+  margin-top: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.stat-box {
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--primary);
+  border-radius: 8px;
+  padding: 15px;
+  min-width: 140px;
+  text-align: center;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.stat-box p {
+  margin: 4px 0 0 0;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.stat-box .stat-number {
+  color: var(--heading);
+}
+
+/* Ticket stats always come in this order:
+   Total, Today, Open, In Progress, Resolved, Urgent */
+.stats:first-of-type .stat-box:nth-child(3) {
+  border-top-color: var(--status-open);
+}
+.stats:first-of-type .stat-box:nth-child(3) .stat-number {
+  color: var(--status-open);
+}
+
+.stats:first-of-type .stat-box:nth-child(4) {
+  border-top-color: var(--status-progress);
+}
+.stats:first-of-type .stat-box:nth-child(4) .stat-number {
+  color: var(--status-progress);
+}
+
+.stats:first-of-type .stat-box:nth-child(5) {
+  border-top-color: var(--status-resolved);
+}
+.stats:first-of-type .stat-box:nth-child(5) .stat-number {
+  color: var(--status-resolved);
+}
+
+.stats:first-of-type .stat-box:nth-child(6) {
+  border-top-color: var(--status-urgent);
+  background: linear-gradient(var(--status-urgent-soft), var(--surface));
+}
+.stats:first-of-type .stat-box:nth-child(6) .stat-number {
+  color: var(--status-urgent);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.big-card {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 30px 20px;
+  text-decoration: none;
+  color: inherit;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: border-color var(--transition), transform var(--transition), background var(--transition);
+}
+
+.big-card:hover {
+  background: var(--surface-2);
+  border-color: var(--primary);
+  transform: translateY(-3px);
+}
+
+.big-card h3 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+.big-card p {
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .dashboard {
+    padding: 16px;
+  }
+
+  .stat-box {
+    flex: 1 1 calc(50% - 15px);
+    min-width: 0;
+  }
+}

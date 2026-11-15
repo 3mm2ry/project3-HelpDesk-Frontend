@@ -67,7 +67,7 @@ function EditTicket({ user }) {
   }
 
   return (
-    <div>
+    <div className="page ticket-form">
       <h1>Edit Ticket</h1>
 
       <form onSubmit={handleSubmit}>

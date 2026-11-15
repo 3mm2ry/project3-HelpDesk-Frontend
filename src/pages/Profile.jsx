@@ -1,4 +1,5 @@
 
+import "../CSS/Profile.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { getMyProfile } from "../services/ProfileService";
@@ -26,7 +27,7 @@ function Profile() {
   }, []);
 
   return (
-    <div>
+    <div className="page profile-page">
       <h1>My Profile</h1>
 
       {profile ? (

@@ -92,7 +92,7 @@ function App() {
 
         <Route
           path="/tickets/:ticketId"
-          element={user ? <TicketDetails /> : <Navigate to="/sign-in" />}
+          element={user ? <TicketDetails user={user} /> : <Navigate to="/sign-in" />}
         />
 
         <Route

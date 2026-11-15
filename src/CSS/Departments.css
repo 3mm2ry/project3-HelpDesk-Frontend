@@ -1,0 +1,49 @@
+/* Department pages: list and details */
+
+/* "Add Department" link at the top of the list */
+.department-list > a {
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 8px 16px;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  transition: background var(--transition);
+}
+
+.department-list > a:hover {
+  background: var(--primary-hover);
+  text-decoration: none;
+}
+
+/* one box per department */
+.department-list > div {
+  margin-bottom: 15px;
+  padding: 15px 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.department-list > div:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+
+.department-list > div h2 {
+  margin: 0 0 8px 0;
+}
+
+.department-list > div p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+/* Edit link next to the Delete button */
+.department-details a {
+  margin-right: 12px;
+}

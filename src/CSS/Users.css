@@ -1,0 +1,31 @@
+/* User pages: list and details */
+
+/* one box per user */
+.user-list > div {
+  margin-bottom: 15px;
+  padding: 15px 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.user-list > div:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+
+.user-list > div h2 {
+  margin: 0 0 8px 0;
+}
+
+.user-list > div p {
+  margin: 4px 0;
+  color: var(--text-muted);
+}
+
+/* Edit link next to the Delete button */
+.user-details a {
+  margin-right: 12px;
+}

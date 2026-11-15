@@ -1,3 +1,4 @@
+import "../../CSS/Assets.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import {
@@ -54,7 +55,7 @@ function AssetRequests() {
   );
 
   return (
-    <div>
+    <div className="page asset-requests">
       <h1>Borrow Requests</h1>
       <p className="error">{error}</p>
       <h2>Pending Requests</h2>

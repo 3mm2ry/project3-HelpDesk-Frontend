@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import "./Homepage.css";
+import "../CSS/Homepage.css";
 
 function Homepage() {
   const features = [

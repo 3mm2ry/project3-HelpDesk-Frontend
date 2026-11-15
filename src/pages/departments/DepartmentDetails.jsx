@@ -1,3 +1,4 @@
+import "../../CSS/Departments.css";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router";
 import { getDepartmentById, deleteDepartment } from "../../services/departmentService";
@@ -30,7 +31,7 @@ async function handleDelete() {
 
 
   return (
-    <div>
+    <div className="page department-details">
   <h1>Department Details</h1>
 
   {department ? (

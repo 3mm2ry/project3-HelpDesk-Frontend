@@ -8,7 +8,8 @@ import floor0 from "../../assets/floor-0_1.png";
 import floor1 from "../../assets/floor-1_1.png";
 import floor2 from "../../assets/floor-2_1.png";
 
-import "./Location.css";
+import "../../CSS/Location.css";
+import "../../CSS/Locations.css";
 
 const floorImages = [floor0, floor1, floor2];
 const floorNames = ["Ground", "First", "Second"];
@@ -113,7 +114,7 @@ function LocationList({ user }) {
   }
 
   return (
-    <div>
+    <div className="location-page location-list">
       <h1>Office Map</h1>
 
       {user.role === "Admin" ? (
@@ -121,7 +122,7 @@ function LocationList({ user }) {
       ) : null}
 
       {isStaff ? (
-        <div>
+        <div className="floor-buttons">
           {floorNames.map((floorName, index) => (
             <button key={floorName} onClick={() => setSelectedFloor(index)}>
               {floorName}{" "}

@@ -1,3 +1,4 @@
+import "../../CSS/Assets.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { getAllAssets } from "../../services/assetServices";
@@ -15,7 +16,7 @@ function AssetList({ user }) {
   }, []);
 
   return (
-    <div>
+    <div className="page asset-list">
       <h1>Assets</h1>
 
       {user.role === "IT-Staff" || user.role === "Admin" ? (

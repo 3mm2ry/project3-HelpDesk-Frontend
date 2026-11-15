@@ -46,7 +46,7 @@ async function handleSubmit(event) {
 
 
   return (
-   <div>
+   <div className="page department-form">
   <h1>{departmentId ? "Edit Department" : "Create Department"}</h1>
 
   <form onSubmit={handleSubmit}>

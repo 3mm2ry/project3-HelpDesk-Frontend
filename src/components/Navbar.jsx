@@ -1,3 +1,4 @@
+import "../CSS/Navbar.css";
 import { Link } from "react-router";
 
 import employeeImg from "../assets/employee.png";

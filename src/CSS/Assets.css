@@ -1,0 +1,78 @@
+/* Asset pages: list, details, borrow requests */
+
+/* "Add Asset" and "Borrow Requests" links at the top of the list */
+.asset-list > a {
+  display: inline-block;
+  margin: 0 10px 15px 0;
+  padding: 8px 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.asset-list > a:hover {
+  background: var(--surface-2);
+  border-color: var(--primary-light);
+  text-decoration: none;
+}
+
+/* the first link (Add Asset) is the main action */
+.asset-list > a:first-of-type {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: white;
+}
+
+.asset-list > a:first-of-type:hover {
+  background: var(--primary-hover);
+}
+
+/* one box per asset */
+.asset-list > div,
+.asset-requests > div {
+  margin-bottom: 15px;
+  padding: 15px 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.asset-list > div:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+
+.asset-list > div p,
+.asset-requests > div p {
+  color: var(--text-muted);
+}
+
+.asset-list > div h2,
+.asset-requests > div h3 {
+  margin-top: 0;
+}
+
+.asset-requests h2 {
+  margin-top: 25px;
+}
+
+/* images row on the details page */
+.asset-details > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.asset-details img {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.asset-details form {
+  margin-bottom: 15px;
+}

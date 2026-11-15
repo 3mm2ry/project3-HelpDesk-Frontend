@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { getAllTickets } from "../services/ticketService";
 import { getAllAssets } from "../services/assetServices";
 import { getAllUsers } from "../services/userService";
-import "./Dashboard.css";
+import "../CSS/Dashboard.css";
 
 function Dashboard({ user }) {
   const [tickets, setTickets] = useState([]);

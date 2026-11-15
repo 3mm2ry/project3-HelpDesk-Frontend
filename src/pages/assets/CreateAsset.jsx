@@ -46,7 +46,7 @@ function CreateAsset() {
   }
 
   return (
-    <div>
+    <div className="page asset-form">
       <h1>Create Asset</h1>
       <p className="error">{error}</p>
 

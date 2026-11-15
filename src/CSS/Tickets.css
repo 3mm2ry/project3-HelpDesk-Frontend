@@ -1,0 +1,120 @@
+/* Ticket pages: list, details, comments */
+
+/* one box per ticket / per comment, and the box around ticket details */
+.ticket-list > div,
+.ticket-comments > div,
+.ticket-details > div {
+  margin-bottom: 15px;
+  padding: 15px 20px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.ticket-list > div:hover {
+  border-color: var(--border-strong);
+  border-left-color: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+.ticket-comments > div {
+  border-left-color: var(--border-strong);
+}
+
+.ticket-list > div h2,
+.ticket-details > div h2,
+.ticket-comments > div h3 {
+  margin-top: 0;
+}
+
+.ticket-list > div p,
+.ticket-details > div p {
+  color: var(--text-muted);
+  margin: 6px 0;
+}
+
+/* Priority (3rd <p>) and Status (4th <p>) look like badges */
+.ticket-list > div > p:nth-of-type(3),
+.ticket-list > div > p:nth-of-type(4),
+.ticket-details > div > p:nth-of-type(3),
+.ticket-details > div > p:nth-of-type(4) {
+  display: inline-block;
+  margin: 6px 8px 6px 0;
+  padding: 3px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Status badge default color = blue */
+.ticket-list > div > p:nth-of-type(4),
+.ticket-details > div > p:nth-of-type(4) {
+  border-color: transparent;
+  background: var(--primary-soft);
+  color: var(--primary-light);
+}
+
+/* Ready-made status colors.
+   To use them, the status <p> needs a class, e.g.
+   className={"status-" + oneTicket.status.toLowerCase().replace(" ", "-")}  */
+.ticket-list > div > p.status-open,
+.ticket-details > div > p.status-open {
+  background: var(--status-open-soft);
+  color: var(--status-open);
+}
+
+.ticket-list > div > p.status-in-progress,
+.ticket-details > div > p.status-in-progress {
+  background: var(--status-progress-soft);
+  color: var(--status-progress);
+}
+
+.ticket-list > div > p.status-resolved,
+.ticket-details > div > p.status-resolved {
+  background: var(--status-resolved-soft);
+  color: var(--status-resolved);
+}
+
+.ticket-list > div > p.status-closed,
+.ticket-details > div > p.status-closed {
+  background: var(--status-closed-soft);
+  color: var(--status-closed);
+}
+
+/* each ticket link sits on its own line at the bottom */
+.ticket-list > div > a {
+  display: block;
+  margin-top: 10px;
+}
+
+/* ticket images side by side */
+.ticket-details > div > div {
+  display: inline-block;
+  margin: 0 10px 10px 0;
+}
+
+.ticket-details img {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.ticket-details a {
+  display: block;
+  margin: 8px 0;
+}
+
+/* the date under each comment */
+.ticket-comments > div p:last-of-type {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.ticket-comments h2 {
+  margin-top: 25px;
+}

@@ -1,5 +1,6 @@
 // src/components/SignInForm/SignInForm.jsx
 
+import "../CSS/Auth.css";
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
@@ -31,7 +32,7 @@ const SignInForm = ({ setUser }) => {
   };
 
   return (
-    <main>
+    <main className="page auth-page">
       <h1>Sign In</h1>
       <p className='error'>{error}</p>
       <form autoComplete='off' onSubmit={handleSubmit}>
